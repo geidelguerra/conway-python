@@ -61,7 +61,6 @@ def simulate(grid_size: int = 30, tick_interval = 1):
   while (True):
     output = ''
     tick += 1
-    something_changed = False
     for x in range(0, grid_size):
       for y in range(0, grid_size):
         live_neighbours_count = get_live_neighbours_count(grid, x, y)
@@ -69,10 +68,8 @@ def simulate(grid_size: int = 30, tick_interval = 1):
         if grid[x][y]:
           if live_neighbours_count < 2 or  live_neighbours_count > 3:
             grid[x][y] = False
-            something_changed = True
         elif live_neighbours_count == 3:
           grid[x][y] = True
-          something_changed = True
 
         if grid[x][y]:
           output += ALIVE_CELL_CHAR
